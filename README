@@ -1,0 +1,15 @@
+Branching Strategy
+Do not commit directly to the master branch. Follow standard Gitflow branching procedures:
+master - This should exactly mirror what's currently in production. Never commit directly to master.
+develop - Code in develop should be code reviewed and tested. Code in develop should always be in potentially shippable state
+feature/xxxx - Used for developing features before submitting for code review. Choose a short, meaningful description of the change being made, such as
+text-search. Where possible add the JIRA ticket number, e.g feature/BBM-206-text-search. If the feature is too large to be code reviewed in one go a base
+branch can be created where the sub branches will merge into. For this branch off the main feature branch including a short description of what it's for.
+bugfix/xxxx - Used for bug fixes before submitting for code review. Prefix with your initials or short name and where possible add the JIRA ticket number, e.g
+bugfix/BBM-666-something-broken.
+chore/xxxx - Used for code changes that are not part of a feature or bug fix, such as updating automated build settings. Prefix with JIRA ticket where
+relevant, e.g chore/BBM-238-skeleton-project.
+release/xxxx - Used for freezing code for a release and should only be created from develop. At the point of merging into develop and master, a tag should be
+applied. The name of the branch and tag should reflect the new version for the release, e.g release/1.2.0 for the branch and release-1.2.0 for the tag.
+hotfix/xxxx - Used for developing urgent fixes, created from master rather than develop. Follows the same branch naming conventions. Tags should be applied as
+new versions are created at the point of being merged into master and develop.
