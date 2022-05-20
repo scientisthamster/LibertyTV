@@ -1,3 +1,5 @@
+package commons
+
 import dependencies.AnnotationProcessorsDependencies
 import dependencies.Dependencies
 import extensions.addTestsDependencies
@@ -30,7 +32,8 @@ android {
         isEnabled = true
     }
 
-    flavorDimensions = mutableListOf(BuildProductDimensions.ENVIRONMENT)
+    flavorDimensions.addAll(mutableListOf(BuildProductDimensions.ENVIRONMENT))
+
     productFlavors {
         ProductFlavorDevelop.libraryCreate(this)
         ProductFlavorStaging.libraryCreate(this)
@@ -61,6 +64,6 @@ dependencies {
 
     kapt(AnnotationProcessorsDependencies.DAGGER)
 
-    testImplementation(project(BuildModules.Libraries.TEST_UTILS))
+    // testImplementation(project(BuildModules.Libraries.TEST_UTILS))
     addTestsDependencies()
 }

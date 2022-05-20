@@ -1,4 +1,5 @@
-import com.android.build.gradle.internal.dsl.ProductFlavor
+import com.android.build.api.dsl.ApplicationProductFlavor
+import com.android.build.api.dsl.LibraryProductFlavor
 import org.gradle.api.NamedDomainObjectContainer
 
 /**
@@ -9,12 +10,12 @@ interface BuildProductFlavor {
     val name: String
 
     fun libraryCreate(
-        namedDomainObjectContainer: NamedDomainObjectContainer<ProductFlavor>
-    ): ProductFlavor
+        namedDomainObjectContainer: NamedDomainObjectContainer<LibraryProductFlavor>
+    ): LibraryProductFlavor
 
     fun appCreate(
-        namedDomainObjectContainer: NamedDomainObjectContainer<ProductFlavor>
-    ): ProductFlavor
+        namedDomainObjectContainer: NamedDomainObjectContainer<ApplicationProductFlavor>
+    ): ApplicationProductFlavor
 }
 
 object ProductFlavorDevelop : BuildProductFlavor {
@@ -22,18 +23,16 @@ object ProductFlavorDevelop : BuildProductFlavor {
         get() = "dev"
 
     override fun libraryCreate(
-        namedDomainObjectContainer: NamedDomainObjectContainer<ProductFlavor>
-    ): ProductFlavor {
+        namedDomainObjectContainer: NamedDomainObjectContainer<LibraryProductFlavor>
+    ): LibraryProductFlavor {
         return namedDomainObjectContainer.create(name) {
-            applicationIdSuffix = ".dev"
-            versionNameSuffix = "-dev"
             dimension = BuildProductDimensions.ENVIRONMENT
         }
     }
 
     override fun appCreate(
-        namedDomainObjectContainer: NamedDomainObjectContainer<ProductFlavor>
-    ): ProductFlavor {
+        namedDomainObjectContainer: NamedDomainObjectContainer<ApplicationProductFlavor>
+    ): ApplicationProductFlavor {
         return namedDomainObjectContainer.create(name) {
             versionNameSuffix = "-dev"
             dimension = BuildProductDimensions.ENVIRONMENT
@@ -46,18 +45,16 @@ object ProductFlavorStaging : BuildProductFlavor {
         get() = "staging"
 
     override fun libraryCreate(
-        namedDomainObjectContainer: NamedDomainObjectContainer<ProductFlavor>
-    ): ProductFlavor {
+        namedDomainObjectContainer: NamedDomainObjectContainer<LibraryProductFlavor>
+    ): LibraryProductFlavor {
         return namedDomainObjectContainer.create(name) {
-            applicationIdSuffix = ".staging"
-            versionNameSuffix = "-staging"
             dimension = BuildProductDimensions.ENVIRONMENT
         }
     }
 
     override fun appCreate(
-        namedDomainObjectContainer: NamedDomainObjectContainer<ProductFlavor>
-    ): ProductFlavor {
+        namedDomainObjectContainer: NamedDomainObjectContainer<ApplicationProductFlavor>
+    ): ApplicationProductFlavor {
         return namedDomainObjectContainer.create(name) {
             versionNameSuffix = "-staging"
             dimension = BuildProductDimensions.ENVIRONMENT
@@ -70,18 +67,16 @@ object ProductFlavorProduction : BuildProductFlavor {
         get() = "prod"
 
     override fun libraryCreate(
-        namedDomainObjectContainer: NamedDomainObjectContainer<ProductFlavor>
-    ): ProductFlavor {
+        namedDomainObjectContainer: NamedDomainObjectContainer<LibraryProductFlavor>
+    ): LibraryProductFlavor {
         return namedDomainObjectContainer.create(name) {
-            applicationIdSuffix = ".prod"
-            versionNameSuffix = "-prod"
             dimension = BuildProductDimensions.ENVIRONMENT
         }
     }
 
     override fun appCreate(
-        namedDomainObjectContainer: NamedDomainObjectContainer<ProductFlavor>
-    ): ProductFlavor {
+        namedDomainObjectContainer: NamedDomainObjectContainer<ApplicationProductFlavor>
+    ): ApplicationProductFlavor {
         return namedDomainObjectContainer.create(name) {
             versionNameSuffix = "-prod"
             dimension = BuildProductDimensions.ENVIRONMENT
