@@ -1,8 +1,6 @@
 import dependencies.AnnotationProcessorsDependencies
 import dependencies.Dependencies
-import extensions.buildConfigStringField
-import extensions.implementation
-import extensions.kapt
+import extensions.*
 
 plugins {
     id("commons.android-library")
@@ -11,11 +9,15 @@ plugins {
 android {
     buildTypes.forEach {
         try {
-            it.buildConfigStringField("API_BASE_URL", "https://todo.com")
+            it.buildConfigStringField("TMDB_API_BASE_URL", "https://api.themoviedb.org/3/")
+            it.buildConfigStringField("TMDB_API_KEY", getLocalProperty("moviedb.key"))
+
+            it.buildConfigBooleanField("MOVIE_DATABASE_EXPORT_SCHEMA", false)
+            it.buildConfigStringField("MOVIE_DATABASE_NAME", "movie-db")
+            it.buildConfigIntField("MOVIE_DATABASE_VERSION", 1)
         } catch (ignored: Exception) {
             throw InvalidUserDataException(
-                "You should define 'marvel.key.public' and " +
-                        "'marvel.key.private' in local.properties. Visit 'https://developer.marvel.com' " +
+                "You should define 'moviedb.key' in local.properties. Visit 'https://www.themoviedb.org/' " +
                         "to obtain them."
             )
         }
