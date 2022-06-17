@@ -2,7 +2,7 @@
  * Created by Khomiak Ivan on 12,May,2022
  */
 object BuildDependenciesVersions {
-    const val KOTLIN = "1.4.10"
+    const val KOTLIN = "1.6.21"
     const val APPCOMPAT = "1.2.0"
     const val MATERIAL = "1.2.1"
     const val COROUTINES = "1.3.9"
@@ -15,7 +15,7 @@ object BuildDependenciesVersions {
     const val CONSTRAIN_LAYOUT = "2.0.2"
     const val SWIPE_REFRESH_LAYOUT = "1.1.0"
     const val PAGING = "2.1.2"
-    const val DAGGER = "2.29.1"
+    const val DAGGER = "2.42"
     const val TIMBER = "4.7.1"
     const val RETROFIT = "2.9.0"
     const val LOGGING = "4.9.0"
